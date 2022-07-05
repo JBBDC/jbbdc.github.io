@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Разработка</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+<!--    <header class="header">-->
+<!--        <div class="header__title">Исмаил ЖупецкЪй</div>-->
+<!--        <div class="header__contacts">main@r.c</div>-->
+<!--    </header>-->
+    <main class="main">
+        <section class="about">
+            Java-script, HTML, CSS, PHP, Wordpress, Vue.js, Vuetify.
+        </section>
+        <h2 class="title">Примеры работ:</h2>
+        <section class="works">
+            <div class="works__item">
+                <img src="images/24zybki.ru.png" data-text="Верстка и установка на Wordpress новых страниц сайта стоматологической клиники" data-link="https://24zybki.ru" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/rem-consult.ru.png" data-text="Сайт юридической фирмы на CMS MODX Evolution" data-link="https://rem-consult.ru" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/krovstyle.by.png" data-text="Квиз на Vue.js и Vuetify" data-link="https://jbbdc.github.io/krovstyle/" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/a7stroy.ru-short.png" data-text="Сайт на Wordpress" data-link="https://a7stroy.ru" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/skfo.online.png" data-text="Сайт на Wordpress" data-link="https://skfo.online" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/aleksandria.land.png" data-text="Сайт на Wordpress" data-link="https://aleksandria.land" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/xlebdostavka.ru.png" data-text="Сайт на Wordpress" data-link="https://xlebdostavka.ru" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/standart-tepla.com.png" data-text="Сайт на Wordpress" data-link="https://standart-tepla.com" alt="work" class="works__image">
+            </div>
+            <div class="works__item">
+                <img src="images/breketi.png" data-text="Сайт на Tilda" data-link="https://xn--90aciabgy0aiaqfx0k.xn--p1ai/" alt="work" class="works__image">
+            </div>
+        </section>
+        <section class="contacts">
+            <h2 class="title">Контакты:</h2>
+            <div class="contacts__items">
+                <div class="contacts__item">
+                    <img src="images/email.png" alt="tg" class="contacts__icon">
+                    <a href="mailto:frantsev.d8@gmail.com" class="contacts__link">frantsev.d8@gmail.com</a>
+                </div>
+                <div class="contacts__item">
+                    <img src="images/tg.png" alt="tg" class="contacts__icon">
+                    <a href="https://t.me/www177" class="contacts__link">@www177</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="modal" class="modal">
+        <div class="modal__overlay"></div>
+        <img alt="close" src="images/close.png" class="modal__close">
+        <div class="modal__image-wrap">
+            <img src="" alt="" class="modal__image">
+        </div>
+        <div class="modal__content">
+            <a href="" target="_blank" class="modal__link"></a>
+            <div class="modal__text"></div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function (){
+        const renderModal = function(image, href, text, modal) {
+            modal.getElementsByClassName("modal__link")[0].href = href;
+            modal.getElementsByClassName("modal__link")[0].innerText = href;
+            modal.getElementsByClassName("modal__text")[0].innerText = text;
+            modal.getElementsByClassName("modal__image")[0].src = image;
+            modal.classList.add("modal_active");
+        }
+
+        const closeModals = function(modals) {
+            for(let i = 0; i < modals.length; i++) {
+                modals[i].classList.remove("modal_active");
+            }
+        }
+
+        let works = document.getElementsByClassName("works__image");
+        for(let i = 0; i < works.length; i++) {
+            let work = works[i];
+            work.addEventListener("click", function () {
+                renderModal(work.src, work.dataset.link, work.dataset.text, document.getElementById("modal"));
+            });
+        }
+
+        let close = document.querySelectorAll(".modal__close, .modal__overlay");
+        for(let i = 0; i < close.length; i++) {
+            close[i].addEventListener("click", function () {
+                closeModals( document.getElementsByClassName("modal"));
+            });
+        }
+    });
+</script>
+</body>
+</html>
